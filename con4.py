@@ -7,6 +7,7 @@ class GameBoard:
 	"""Holds a list of lists"""
 	pieces = ["-", "r", "b"] #Pieces that are valid: "-" --> Empty slot, "b" --> blue piece, "r" --> red piece
 	def __init__(self, N, M):
+		foo = "foo"
 		self.grid = _create_board(N, M)
 		self._row = N
 		self._col = M
