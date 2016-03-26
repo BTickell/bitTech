@@ -7,6 +7,7 @@ class GameBoard:
 	"""Holds a list of lists"""
 	pieces = ["-", "r", "b"] #Pieces that are valid: "-" --> Empty slot, "b" --> blue piece, "r" --> red piece
 	def __init__(self, N, M):
+		foo = "foo"
 		self.grid = _create_board(N, M)
 		self._row = N
 		self._col = M
@@ -27,18 +28,18 @@ class GameBoard:
 
 	def __getitem__(self, pos:(int, int)):
 		row, col = pos
-		assert 0 <= row < self._row, "GameBoard::get_piece:: Row is out of range!"
-		assert 0 <= col < self._col, "GameBoard::get_piece:: Column is out of range!"
+		assert row < self._row, "GameBoard::get_piece:: Row is out of range!"
+		assert col < self._col, "GameBoard::get_piece:: Column is out of range!"
 		return self.grid[row][col]
 
 	def __setitem__(self, pos:(int, int), val):
 		row, col = pos
-		assert 0 <= row < self._row, "GameBoard::get_piece:: Row is out of range!"
-		assert 0 <= col < self._col, "GameBoard::get_piece:: Column is out of range!"
+		assert row < self._row, "GameBoard::get_piece:: Row is out of range!"
+		assert col < self._col, "GameBoard::get_piece:: Column is out of range!"
 		self.grid[row][col] = val
- 
+
 	def add_piece(self, target: int):
-		assert 0 <= target < self._col, "GameBoard::add_piece:: Column is out of range!"
+		assert target < self._col, "GameBoard::add_piece:: Column is out of range!"
 		assert self.is_empty(0,target), "GameBoard::add_piece:: Column is full!"
 		to_place = self._row - 1
 
@@ -46,8 +47,6 @@ class GameBoard:
 			to_place -= 1
 
 		self[to_place, target] = self.piece
-
-
 
 
 	"""Built in operator functions <0v3rl04ded>""" 
