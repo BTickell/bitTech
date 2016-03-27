@@ -20,10 +20,11 @@ class GameBoard:
 			self.piece = "r"
 
 	def valid(self, N, M):
-		if N < self._row and N >= 0:
+		return N < self._row and N >= 0 and M < self._col and M >= 0
+		"""if N < self._row and N >= 0:
 			if M < self._col and M >= 0:
 				return True 
-		return False
+		return False"""
 
 	def is_empty(self, row:int, col:int):
 		return self[row, col] == "-"
@@ -41,6 +42,7 @@ class GameBoard:
 		self.grid[row][col] = val
  
 	def add_piece(self, target: int):
+		assert type(target) == int, "GameBoard::add_piece:: not a valid column number!"
 		assert 0 <= target < self._col, "GameBoard::add_piece:: Column is out of range!"
 		assert self.is_empty(0,target), "GameBoard::add_piece:: Column is full!"
 		to_place = self._row - 1
