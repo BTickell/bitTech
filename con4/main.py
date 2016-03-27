@@ -32,4 +32,3 @@ def main():
 			board.player_swap()
 		except AssertionError as e:
 			print("An ERROR occurred, please try again")
-main()
